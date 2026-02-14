@@ -1,0 +1,18 @@
+---
+const { showCta = true } = Astro.props;
+---
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      socram <span>09</span>
+    </a>
+    {showCta && (
+      <div class="nav-actions">
+        <a class="pill-button" href="https://github.com/socram03" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </div>
+    )}
+  </div>
+</nav>

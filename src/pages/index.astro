@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar.astro';
+import links from '../config/links.json';
+import skills from '../config/skills.json';
+
+const today = new Date();
+const isBirthday = today.getDate() === 28 && today.getMonth() === 9;
+const skillTheme = 'dark';
+---
+
+<BaseLayout noScroll>
+  <NavBar />
+  <main class="page fade-in">
+    <section class="hero" data-hero>
+      <div class="hero-card">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+          <p class="hero-kicker">Discord API solutions designer</p>
+          <h1>A quiet corner for experiments and ideas.</h1>
+          <p>JavaScript's ecosystem is my passion, python is a rare treat, looking for the zenith of the development experience.</p>
+        </div>
+      </div>
+      {isBirthday && (
+        <div class="alert">Hey! It's my birthday today, wohoo! 🎉</div>
+      )}
+    </section>
+
+    <section class="grid stagger">
+      <article class="card profile">
+        <img src="/img/avatar.png" alt="socram avatar" />
+        <div>
+          <h2>I'm Marcos Susaña 👋</h2>
+          <p>I love cats and procrastinating, autistic by definition, you should try Seyfert.</p>
+        </div>
+        <a class="pill-button small ghost" href="/repos">Browse repos</a>
+      </article>
+
+      <div class="socials">
+        <a href={links.rrss.discord} target="_blank" rel="noreferrer" aria-label="Discord">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M19.54 4.35A18.3 18.3 0 0 0 15.5 3.1a13.3 13.3 0 0 0-.63 1.28 17.1 17.1 0 0 0-4.73 0 12.8 12.8 0 0 0-.65-1.28 18.6 18.6 0 0 0-4.04 1.25C2.86 8.15 2 11.83 2.22 15.45a18.7 18.7 0 0 0 5.65 2.9 14.2 14.2 0 0 0 1.23-2 11 11 0 0 1-1.94-.93l.47-.37c3.75 1.7 7.8 1.7 11.5 0l.48.37c-.62.37-1.26.68-1.94.93a14.6 14.6 0 0 0 1.23 2 18.6 18.6 0 0 0 5.65-2.9c.24-3.62-.62-7.3-4.02-11.1ZM8.9 13.88c-.73 0-1.33-.68-1.33-1.52 0-.84.58-1.52 1.33-1.52.75 0 1.35.68 1.33 1.52 0 .84-.58 1.52-1.33 1.52Zm6.2 0c-.73 0-1.33-.68-1.33-1.52 0-.84.58-1.52 1.33-1.52.75 0 1.35.68 1.33 1.52 0 .84-.58 1.52-1.33 1.52Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+        <a href={links.rrss.twitter} target="_blank" rel="noreferrer" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M20.9 7.6c.02.2.02.4.02.6 0 6.2-4.72 13.3-13.3 13.3-2.64 0-5.1-.77-7.16-2.1.37.05.72.06 1.1.06a9.4 9.4 0 0 0 5.83-2.02 4.68 4.68 0 0 1-4.36-3.25c.29.04.58.07.89.07.4 0 .8-.06 1.17-.16A4.67 4.67 0 0 1 2.8 9.32v-.05c.6.33 1.3.54 2.03.56a4.67 4.67 0 0 1-1.45-6.23 13.3 13.3 0 0 0 9.66 4.9 4.64 4.64 0 0 1 7.91-4.23 9.4 9.4 0 0 0 2.96-1.13 4.6 4.6 0 0 1-2.05 2.57 9.3 9.3 0 0 0 2.68-.73 10 10 0 0 1-2.34 2.42Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+        <a href={links.rrss.linkendin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 8.98h3.96V21H3V8.98Zm7.5 0h3.8v1.64h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.07V21h-3.96v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H10.5V8.98Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+        <a href={links.rrss.seyfert} target="_blank" rel="noreferrer" aria-label="Seyfert">
+          <img src="https://raw.githubusercontent.com/tiramisulabs/seyfert/refs/heads/main/assets/icon.svg" alt="Seyfert" class="social-icon" />
+        </a>
+      </div>
+
+      <article class="card terminal">
+        <div class="terminal-bar">
+          <span class="terminal-title">socram@dev: ~</span>
+          <div class="terminal-controls">
+            <span class="terminal-control">─</span>
+            <span class="terminal-control">□</span>
+            <span class="terminal-control">×</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="prompt"><span class="user">socram@dev</span>:<span class="path">~</span>$ cat about.txt</div>
+          <br />
+          &gt; Building Seyfert.
+          <br />
+          &gt; I hate mornings.
+          <br />
+          &gt; Typescript black mage.
+          <br />
+          <span class="fade">&gt; EOF</span>
+        </div>
+      </article>
+
+      <article class="card skills">
+        <strong>Skills</strong>
+        <div class="skills-grid">
+          {skills.map((skill) => (
+            <img
+              src={`https://skillicons.dev/icons?i=${skill.key}&theme=${skillTheme}`}
+              alt={skill.name}
+              title={skill.name}
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </article>
+    </section>
+  </main>
+  <script is:inline>
+    const hero = document.querySelector('[data-hero]');
+    if (hero) {
+      const card = hero.querySelector('.hero-card');
+      const update = (event) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--hero-x', `${x}%`);
+        card.style.setProperty('--hero-y', `${y}%`);
+        const tiltX = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+        const tiltY = ((event.clientY - rect.top) / rect.height - 0.5) * -10;
+        card.style.setProperty('--hero-tilt-x', `${tiltX}deg`);
+        card.style.setProperty('--hero-tilt-y', `${tiltY}deg`);
+      };
+      hero.addEventListener('pointermove', update);
+      hero.addEventListener('pointerleave', () => {
+        if (!card) return;
+        card.style.setProperty('--hero-x', '50%');
+        card.style.setProperty('--hero-y', '20%');
+        card.style.setProperty('--hero-tilt-x', '0deg');
+        card.style.setProperty('--hero-tilt-y', '0deg');
+      });
+    }
+  </script>
+</BaseLayout>

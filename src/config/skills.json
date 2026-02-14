@@ -30,5 +30,37 @@
 	{
 		"name": "HTML",
 		"key": "html"
+	},
+	{
+		"name": "Python",
+		"key": "py"
+	},
+	{
+		"name": "docker",
+		"key": "docker"
+	},
+	{
+		"name": "vercel",
+		"key": "vercel"
+	},
+	{
+		"name": "nginx",
+		"key": "nginx"
+	},
+	{
+		"name": "redis",
+		"key": "redis"
+	},
+	{
+		"name": "linux",
+		"key": "linux"
+	},
+	{
+		"name": "bash",
+		"key": "bash"
+	},
+	{
+		"name": "bun",
+		"key": "bun"
 	}
 ]

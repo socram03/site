@@ -1,0 +1,22 @@
+---
+import '../styles/global.css';
+
+const { title = 'socram09 - A Discord API Solutions Designer', description = 'A lazy cat lover 🐈', noScroll = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="socram09" />
+    <meta name="keywords" content="seyfert, seyfert.dev, discord, bot, developer" />
+    <meta name="theme-color" content="#d0763d" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class:list={[{ 'no-scroll': noScroll }]}>
+    <slot />
+  </body>
+</html>

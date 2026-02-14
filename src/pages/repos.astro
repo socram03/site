@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar.astro';
+import links from '../config/links.json';
+
+const githubToken = import.meta.env.PUBLIC_GITHUB_TOKEN || '';
+const githubUser = 'socram03';
+
+const langColors: Record<string, string> = {
+  JavaScript: '#f5c542',
+  TypeScript: '#4f86f7',
+  HTML: '#f1714d',
+  CSS: '#5fa8d3',
+  Shell: '#8bc38b',
+  Python: '#f1d56c',
+  Java: '#ee7b6b',
+  Plain: '#a09a96',
+};
+
+interface Repo {
+  name: string;
+  description: string | null;
+  url: string;
+  stargazerCount: number;
+  forkCount: number;
+  language: string;
+  color: string;
+  updatedAt: string;
+}
+
+let repos: Repo[] = [];
+try {
+  const res = await fetch(`https://api.github.com/users/${githubUser}/repos?per_page=100&sort=updated`, {
+    headers: githubToken ? { Authorization: `Bearer ${githubToken}` } : {},
+  });
+  if (res.ok) {
+    const data = await res.json();
+    repos = data.map((r: any) => {
+      const language = r.language || 'Plain';
+      return {
+        name: r.name,
+        description: r.description,
+        url: r.html_url,
+        stargazerCount: r.stargazers_count,
+        forkCount: r.forks_count,
+        language,
+        color: langColors[language] || langColors.Plain,
+        updatedAt: r.updated_at,
+      };
+    });
+  }
+} catch (e) {
+  console.error(e);
+}
+---
+
+<BaseLayout title="Repositories - socram09" description="Repositories curated by socram09">
+  <NavBar showCta={false} />
+  <main class="page compact fade-in">
+    <section class="repos-hero">
+      <h1>Repositories</h1>
+      <p>
+        Check <a href={links.github} target="_blank" rel="noreferrer">@socram03</a> on GitHub for more.
+      </p>
+    </section>
+
+    <div class="toolbar">
+      <input class="input" type="search" placeholder="Search for a repository" data-repo-search />
+      <select class="select" data-repo-sort>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+        <option value="stars">Stars</option>
+        <option value="forks">Forks</option>
+        <option value="updated">Updated</option>
+      </select>
+    </div>
+
+    <section class="repo-grid" data-repo-grid>
+      {repos.length === 0 ? (
+        <div class="repo-card">No repositories found.</div>
+      ) : (
+        repos.map((repo) => (
+          <a class="repo-card" href={repo.url} target="_blank" rel="noreferrer">
+            <div>
+              <h3>{repo.name}</h3>
+              <p class="card-subtext">{repo.description || "This repo doesn't have any description available."}</p>
+            </div>
+            <div class="repo-meta">
+              <div>
+                <strong>Stars</strong>
+                {repo.stargazerCount}
+              </div>
+              <div>
+                <strong>Forks</strong>
+                {repo.forkCount}
+              </div>
+              <div>
+                <strong>Lang</strong>
+                <span class="repo-lang"><span style={`background:${repo.color}`}></span>{repo.language}</span>
+              </div>
+            </div>
+          </a>
+        ))
+      )}
+    </section>
+  </main>
+
+  <script is:inline>
+    const repoGrid = document.querySelector('[data-repo-grid]');
+    const searchInput = document.querySelector('[data-repo-search]');
+    const sortSelect = document.querySelector('[data-repo-sort]');
+    const cards = Array.from(repoGrid?.querySelectorAll('.repo-card') || []);
+
+    const sortMethods = {
+      asc: (a, b) => a.dataset.name?.localeCompare(b.dataset.name || '') || 0,
+      desc: (a, b) => b.dataset.name?.localeCompare(a.dataset.name || '') || 0,
+      stars: (a, b) => Number(b.dataset.stars || 0) - Number(a.dataset.stars || 0),
+      forks: (a, b) => Number(b.dataset.forks || 0) - Number(a.dataset.forks || 0),
+      updated: (a, b) => new Date(b.dataset.updated || 0) - new Date(a.dataset.updated || 0),
+    };
+
+    function applyFilters() {
+      const search = searchInput?.value?.toLowerCase() || '';
+      const sort = sortSelect?.value || 'asc';
+      const filtered = cards.filter((card) => {
+        const name = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+        return name.includes(search);
+      });
+      filtered.sort((a, b) => {
+        const aName = a.querySelector('h3')?.textContent || '';
+        const bName = b.querySelector('h3')?.textContent || '';
+        const aStars = Number(a.querySelectorAll('.repo-meta > div')[0]?.textContent?.replace(/\D/g, '') || 0);
+        const bStars = Number(b.querySelectorAll('.repo-meta > div')[0]?.textContent?.replace(/\D/g, '') || 0);
+        const aForks = Number(a.querySelectorAll('.repo-meta > div')[1]?.textContent?.replace(/\D/g, '') || 0);
+        const bForks = Number(b.querySelectorAll('.repo-meta > div')[1]?.textContent?.replace(/\D/g, '') || 0);
+        if (sort === 'asc') return aName.localeCompare(bName);
+        if (sort === 'desc') return bName.localeCompare(aName);
+        if (sort === 'stars') return bStars - aStars;
+        if (sort === 'forks') return bForks - aForks;
+        return 0;
+      });
+      if (repoGrid) {
+        repoGrid.innerHTML = '';
+        if (filtered.length === 0) {
+          repoGrid.innerHTML = '<div class="repo-card">No repositories match your search.</div>';
+        } else {
+          filtered.forEach((card) => repoGrid.appendChild(card));
+        }
+      }
+    }
+
+    searchInput?.addEventListener('input', applyFilters);
+    sortSelect?.addEventListener('change', applyFilters);
+  </script>
+</BaseLayout>
