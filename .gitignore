@@ -15,6 +15,14 @@
 # production
 /build
 
+# astro output
+/.astro/
+/dist/
+
+# local workspace artifacts
+/.claude/
+/test-results/
+
 # misc
 .DS_Store
 *.pem

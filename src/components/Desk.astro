@@ -1,0 +1,189 @@
+---
+import links from '../config/links.json';
+import '../styles/desk.css';
+
+const seyfertProject = {
+  sourceUrl: 'https://github.com/tiramisulabs/seyfert',
+  siteUrl: links.rrss.seyfert,
+};
+---
+
+<main class="desk-page">
+  <header class="desk-toolbar">
+    <a class="wordmark" href="/" aria-label="socram09 home">socram09</a>
+    <div class="desk-toolbar__actions" aria-label="Desk controls">
+      <button class="desk-control" type="button" data-shuffle>shuffle</button>
+      <button class="desk-control" type="button" data-reset>reset</button>
+      <button
+        class="desk-control"
+        type="button"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="desk-help"
+        data-help-open
+      >
+        help
+      </button>
+    </div>
+  </header>
+
+  <nav class="desk-links" aria-label="Elsewhere">
+    <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
+    <a href={links.rrss.discord} target="_blank" rel="noreferrer">Discord</a>
+    <a href={links.rrss.twitter} target="_blank" rel="noreferrer">Twitter/X</a>
+  </nav>
+
+  <section class="desk-shell" aria-label="Socram’s draggable personal desk">
+    <div class="desk-surface" data-desk>
+      <article class="desk-object desk-object--intro" data-desk-object="intro" aria-labelledby="intro-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <span class="paper-tape" aria-hidden="true"></span>
+        <h1 id="intro-title">hello, internet.</h1>
+        <p>I'm Marcos Susaña. I make things, avoid mornings, and argue with TypeScript types more than I should.</p>
+      </article>
+
+      <article class="desk-object desk-object--avatar" data-desk-object="avatar" aria-labelledby="avatar-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <h2 class="sr-only" id="avatar-title">Avatar card</h2>
+        <div class="avatar-card__body" data-avatar-card>
+          <div class="avatar-card__face avatar-card__front" data-avatar-front aria-hidden="false">
+            <img
+              src="/img/avatar.png"
+              width="128"
+              height="128"
+              alt="Black and white illustrated avatar of Socram"
+              fetchpriority="high"
+            />
+            <strong>socram09</strong>
+          </div>
+          <div class="avatar-card__face avatar-card__back" data-avatar-back aria-hidden="true">
+            <p>
+              working at
+              <a href="https://clip.tech/" target="_blank" rel="noreferrer">Clip.tech</a>
+            </p>
+            <p>currently doing AI stuff</p>
+          </div>
+        </div>
+        <button
+          class="object-action avatar-card__toggle"
+          type="button"
+          aria-expanded="false"
+          data-avatar-toggle
+        >
+          flip card
+        </button>
+      </article>
+
+      <article class="desk-object desk-object--cat" data-desk-object="cat" aria-labelledby="cat-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <h2 class="sr-only" id="cat-title">Cat with rotating excuses</h2>
+        <div class="cat-art" aria-hidden="true">
+          <span class="cat-art__eyes"></span>
+          <span class="cat-art__muzzle"></span>
+        </div>
+        <p class="cat-phrase" data-cat-phrase aria-live="polite">busy procrastinating</p>
+        <button class="object-action" type="button" data-cat-toggle>change excuse</button>
+      </article>
+
+      <article class="desk-object desk-object--alarm" data-desk-object="alarm" aria-labelledby="alarm-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <div class="alarm-art" aria-hidden="true">
+          <span></span>
+        </div>
+        <h2 id="alarm-title">NO MORNINGS</h2>
+      </article>
+
+      <article class="desk-object desk-object--incident" data-desk-object="incident" aria-labelledby="incident-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <h2 class="sr-only" id="incident-title">Frontend incident note</h2>
+        <span class="incident-pin" aria-hidden="true"></span>
+        <button class="incident-toggle" type="button" aria-pressed="false" data-incident-toggle>
+          <span data-incident-copy>oh god, i hate frontend</span>
+        </button>
+      </article>
+
+      <article class="desk-object desk-object--cake" data-desk-object="python-cake" aria-labelledby="cake-title">
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <div class="cake-art" aria-hidden="true">
+          <span class="cake-art__frosting"></span>
+          <span class="cake-art__candle"></span>
+        </div>
+        <h2 id="cake-title">python — rare treat</h2>
+      </article>
+
+      <article
+        class="desk-object desk-object--calendar"
+        data-desk-object="birthday-calendar"
+        data-calendar
+        aria-labelledby="calendar-title"
+      >
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <div class="calendar-rings" aria-hidden="true"><span></span><span></span></div>
+        <h2 class="calendar-date" id="calendar-title" data-calendar-date>28 SEPTEMBER</h2>
+        <p data-calendar-message>something happens</p>
+        <div class="birthday-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </article>
+
+      <article
+        class="desk-object desk-object--folder"
+        id="things-i-made"
+        data-desk-object="things-i-made"
+        data-project-folder
+        aria-labelledby="folder-title"
+      >
+        <div class="desk-object__grab" data-drag-handle aria-hidden="true"></div>
+        <span class="folder-tab" aria-hidden="true">side quest</span>
+        <h2 id="folder-title">my ongoing side quest</h2>
+        <button
+          class="object-action folder-toggle"
+          type="button"
+          aria-expanded="true"
+          aria-controls="project-papers"
+          data-folder-toggle
+        >
+          close dossier
+        </button>
+        <div class="project-list" id="project-papers" data-project-list aria-hidden="false">
+          <article class="project-sheet">
+            <h3>Seyfert</h3>
+            <p class="project-sheet__summary">A TypeScript framework for building Discord bots.</p>
+            <p class="project-sheet__note">
+              <strong>why it’s still here</strong>
+              I keep coming back to it. Apparently that counts as commitment.
+            </p>
+            <p class="project-sheet__status">
+              <strong>current status</strong>
+              probably refactoring types again
+            </p>
+            <div class="project-sheet__links">
+              <a href={seyfertProject.sourceUrl} target="_blank" rel="noreferrer">
+                source code <span aria-hidden="true">↗</span>
+              </a>
+              <a href={seyfertProject.siteUrl} target="_blank" rel="noreferrer">
+                docs + website <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <div class="drag-demo" data-drag-demo hidden aria-hidden="true">
+        <span class="drag-demo__cursor" aria-hidden="true"></span>
+        <span class="drag-demo__label" data-drag-demo-label>grab the header</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="desk-status sr-only" aria-live="polite" data-desk-status></p>
+
+  <dialog class="help-dialog" id="desk-help" aria-labelledby="help-title" data-help-dialog>
+    <div class="help-dialog__paper">
+      <h2 id="help-title">desk manual, somehow</h2>
+      <p>Drag an object by its header. Tap the labeled controls to flip, cycle, or open things.</p>
+      <p><kbd>Escape</kbd> closes this note and the dossier.</p>
+      <button class="object-action" type="button" data-help-close>got it</button>
+    </div>
+  </dialog>
+</main>
+
+<script src="../scripts/desk.ts"></script>
