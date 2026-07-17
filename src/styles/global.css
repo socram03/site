@@ -1,40 +1,41 @@
-/* Hallmark · genre: playful · macrostructure: Workbench · tone: personal + dry · anchor: warm clay · critique: P5 H4 E5 S5 R5 V5 · contrast: pass · slop: pass · mobile: pass */
+/* Hallmark · genre: editorial · macrostructure: Workbench · tone: graphic + dry · anchor: drafting blue · critique: P5 H4 E5 S5 R5 V4 · contrast: pass · slop: pass · mobile: pass */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --color-room: oklch(38% 0.052 28);
-  --color-room-raised: oklch(29% 0.045 28);
-  --color-room-ink: oklch(95% 0.018 78);
-  --color-room-muted: oklch(82% 0.035 48);
-  --color-room-thread: oklch(73% 0.05 45 / 0.055);
+  --color-room: oklch(93% 0.014 244);
+  --color-room-raised: oklch(87% 0.018 244);
+  --color-room-ink: oklch(23% 0.03 252);
+  --color-room-muted: oklch(53% 0.026 248);
+  --color-room-thread: oklch(84% 0.022 244);
   --color-transparent: transparent;
 
-  --color-wood: oklch(53% 0.105 58);
-  --color-wood-light: oklch(62% 0.105 65);
-  --color-wood-dark: oklch(35% 0.075 48);
-  --color-wood-grain: oklch(29% 0.06 48 / 0.22);
+  --color-board: oklch(49% 0.055 244);
+  --color-board-light: oklch(54% 0.05 244);
+  --color-board-dark: oklch(22% 0.035 250);
+  --color-board-grid: oklch(72% 0.035 242 / 0.28);
+  --color-board-grid-major: oklch(28% 0.04 250 / 0.2);
 
-  --color-paper: oklch(94% 0.026 86);
-  --color-paper-deep: oklch(89% 0.035 83);
-  --color-paper-blue: oklch(88% 0.045 238);
-  --color-paper-rose: oklch(87% 0.055 5);
-  --color-paper-lavender: oklch(88% 0.05 306);
-  --color-paper-amber: oklch(88% 0.075 76);
-  --color-paper-ink: oklch(24% 0.025 42);
-  --color-paper-muted: oklch(43% 0.035 45);
-  --color-rule: oklch(72% 0.045 63);
+  --color-paper: oklch(96% 0.018 92);
+  --color-paper-deep: oklch(89% 0.02 92);
+  --color-paper-blue: oklch(85% 0.055 238);
+  --color-paper-rose: oklch(86% 0.06 24);
+  --color-paper-lavender: oklch(84% 0.035 292);
+  --color-paper-amber: oklch(86% 0.095 88);
+  --color-paper-ink: oklch(20% 0.025 252);
+  --color-paper-muted: oklch(42% 0.026 248);
+  --color-rule: oklch(58% 0.03 248);
 
-  --color-accent: oklch(73% 0.14 70);
-  --color-accent-deep: oklch(51% 0.13 49);
-  --color-focus: oklch(55% 0.16 70);
-  --color-tape: oklch(89% 0.06 88 / 0.72);
-  --color-cat: oklch(58% 0.045 58);
-  --color-cat-dark: oklch(28% 0.025 48);
-  --color-cat-blush: oklch(72% 0.12 20);
-  --color-shadow: oklch(18% 0.035 42 / 0.32);
-  --color-dialog-backdrop: oklch(9% 0.025 330 / 0.76);
+  --color-accent: oklch(62% 0.19 29);
+  --color-accent-deep: oklch(46% 0.155 29);
+  --color-focus: oklch(58% 0.19 29);
+  --color-tape: oklch(84% 0.105 92 / 0.78);
+  --color-cat: oklch(55% 0.035 248);
+  --color-cat-dark: oklch(22% 0.026 252);
+  --color-cat-blush: oklch(66% 0.14 24);
+  --color-shadow: oklch(18% 0.03 252 / 0.27);
+  --color-dialog-backdrop: oklch(16% 0.03 252 / 0.76);
 
-  --font-display: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", ui-sans-serif, sans-serif;
+  --font-display: "Avenir Next Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
   --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-outlier: ui-monospace, "SFMono-Regular", Menlo, Monaco, monospace;
 
@@ -62,10 +63,10 @@
   --dur-short: 220ms;
   --dur-long: 420ms;
 
-  --radius-paper: 0.2rem;
-  --radius-soft: 0.75rem;
-  --radius-desk: 1.1rem;
-  --shadow-object: 0 0.9rem 1.4rem -0.65rem var(--color-shadow);
+  --radius-paper: 0.05rem;
+  --radius-soft: 0.25rem;
+  --radius-desk: 0.25rem;
+  --shadow-object: 0.45rem 0.5rem 0 var(--color-shadow);
 
   --z-base: 1;
   --z-raised: 10;
@@ -97,13 +98,13 @@ body {
   background-image:
     repeating-linear-gradient(
       0deg,
-      var(--color-transparent) 0 0.32rem,
-      var(--color-room-thread) 0.32rem 0.38rem
+      var(--color-transparent) 0 3.95rem,
+      var(--color-room-thread) 3.95rem 4rem
     ),
     repeating-linear-gradient(
       90deg,
-      var(--color-transparent) 0 0.32rem,
-      var(--color-room-thread) 0.32rem 0.38rem
+      var(--color-transparent) 0 3.95rem,
+      var(--color-room-thread) 3.95rem 4rem
     );
   color: var(--color-room-ink);
   font-family: var(--font-body);

@@ -1,4 +1,4 @@
-/* Hallmark · genre: playful · macrostructure: Workbench · theme: custom warm desk · pre-emit critique: P5 H4 E5 S5 R5 V5 */
+/* Hallmark · genre: editorial · macrostructure: Workbench · theme: custom drafting board · pre-emit critique: P5 H4 E5 S5 R5 V5 */
 .desk-page {
   position: relative;
   z-index: var(--z-base);
@@ -10,21 +10,22 @@
   position: relative;
   z-index: var(--z-sticky);
   display: flex;
-  width: min(76rem, 100%);
+  width: min(82rem, 100%);
   min-height: 4rem;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
   margin-inline: auto;
   padding: var(--space-sm) max(var(--space-sm), env(safe-area-inset-left));
+  border-block-end: 0.08rem solid var(--color-room-muted);
 }
 
 .wordmark {
-  color: var(--color-room-ink);
+  color: var(--color-paper-ink);
   font-family: var(--font-outlier);
   font-size: var(--text-sm);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -43,37 +44,40 @@
 .desk-control,
 .object-action {
   min-height: 2.75rem;
-  border: 0.08rem solid currentColor;
+  border: 0.1rem solid currentColor;
   background: var(--color-paper);
   color: var(--color-paper-ink);
   font-family: var(--font-outlier);
   font-size: var(--text-xs);
   font-weight: 700;
+  letter-spacing: 0.03em;
   line-height: 1;
   padding-inline: var(--space-sm);
   text-decoration: none;
   white-space: nowrap;
+  box-shadow: 0.18rem 0.2rem 0 var(--color-paper-ink);
   transition:
     transform var(--dur-micro) var(--ease-out),
     background-color var(--dur-short) var(--ease-out);
 }
 
 .desk-control {
-  border-color: var(--color-room-muted);
-  background: var(--color-room-raised);
-  color: var(--color-room-ink);
+  border-color: var(--color-paper-ink);
+  background: var(--color-paper);
+  color: var(--color-paper-ink);
 }
 
 .desk-control:active,
 .object-action:active {
-  transform: translateY(0.08rem);
+  box-shadow: none;
+  transform: translate(0.12rem, 0.12rem);
 }
 
 .desk-links {
   position: relative;
   z-index: var(--z-raised);
   display: flex;
-  width: min(76rem, 100%);
+  width: min(82rem, 100%);
   justify-content: center;
   gap: var(--space-2xs);
   margin-inline: auto;
@@ -82,8 +86,9 @@
 
 .desk-links a {
   min-height: 2.75rem;
-  border-block-end: 0.15rem solid var(--color-accent);
-  background: var(--color-paper-lavender);
+  border: 0.1rem solid var(--color-paper-ink);
+  border-block-end: 0.28rem solid var(--color-accent);
+  background: var(--color-paper);
   color: var(--color-paper-ink);
   display: inline-flex;
   align-items: center;
@@ -98,7 +103,7 @@
 }
 
 .desk-shell {
-  width: min(76rem, 100%);
+  width: min(82rem, 100%);
   margin-inline: auto;
   padding: var(--space-sm);
 }
@@ -107,18 +112,32 @@
   position: relative;
   min-height: 126rem;
   overflow: hidden;
-  border: 0.55rem solid var(--color-wood-dark);
+  border: 0.22rem solid var(--color-board-dark);
   border-radius: var(--radius-desk);
-  background-color: var(--color-wood);
+  background-color: var(--color-board);
   background-image:
     repeating-linear-gradient(
-      91deg,
-      var(--color-transparent) 0 3.4rem,
-      var(--color-wood-grain) 3.45rem 3.55rem,
-      var(--color-transparent) 3.6rem 7rem
+      0deg,
+      var(--color-transparent) 0 1.95rem,
+      var(--color-board-grid) 1.95rem 2rem
     ),
-    linear-gradient(180deg, var(--color-wood-light), var(--color-wood));
-  box-shadow: 0 1.8rem 3rem -1.8rem var(--color-shadow);
+    repeating-linear-gradient(
+      90deg,
+      var(--color-transparent) 0 1.95rem,
+      var(--color-board-grid) 1.95rem 2rem
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--color-transparent) 0 7.9rem,
+      var(--color-board-grid-major) 7.9rem 8rem
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-transparent) 0 7.9rem,
+      var(--color-board-grid-major) 7.9rem 8rem
+    ),
+    linear-gradient(180deg, var(--color-board-light), var(--color-board));
+  box-shadow: 0.75rem 0.8rem 0 var(--color-shadow);
   isolation: isolate;
 }
 
@@ -142,6 +161,8 @@ html.desk-enhanced .desk-surface {
   transform-origin: center;
   color: var(--color-paper-ink);
   box-shadow: var(--shadow-object);
+  outline: 0.08rem solid var(--color-paper-ink);
+  outline-offset: -0.08rem;
   transition:
     transform 280ms var(--ease-out),
     opacity var(--dur-short) var(--ease-out);
@@ -202,8 +223,9 @@ html.desk-enhanced .desk-surface {
 
   width: 17rem;
   min-height: 10.5rem;
+  border-block-start: 0.45rem solid var(--color-paper-ink);
   background: var(--color-paper);
-  clip-path: polygon(0.5% 1.5%, 99% 0, 100% 96%, 97% 100%, 2% 98%);
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 96% 100%, 0 100%);
 }
 
 .desk-object--intro h1 {
@@ -222,10 +244,10 @@ html.desk-enhanced .desk-surface {
   position: absolute;
   inset-block-start: -0.45rem;
   inset-inline-start: 41%;
-  width: 4.8rem;
-  height: 1.4rem;
+  width: 5.8rem;
+  height: 1.05rem;
   background: var(--color-tape);
-  transform: rotate(3deg);
+  transform: rotate(1deg);
 }
 
 .desk-object--avatar {
@@ -235,7 +257,9 @@ html.desk-enhanced .desk-surface {
 
   width: 15rem;
   height: 17rem;
-  border: 0.65rem solid var(--color-paper);
+  border: 0.14rem solid var(--color-paper-ink);
+  border-block-start-width: 0.7rem;
+  border-block-end-width: 0.35rem;
   background: var(--color-paper-blue);
   padding: 2rem var(--space-sm) var(--space-sm);
 }
@@ -269,7 +293,7 @@ html.desk-enhanced .desk-surface {
   width: 7.2rem;
   height: 7.2rem;
   border: 0.18rem solid var(--color-paper-ink);
-  border-radius: 50%;
+  border-radius: var(--radius-paper);
   object-fit: cover;
 }
 
@@ -282,6 +306,7 @@ html.desk-enhanced .desk-surface {
   flex-direction: column;
   gap: var(--space-md);
   padding: var(--space-md);
+  border: 0.1rem solid var(--color-paper-ink);
   background: var(--color-paper);
   font-family: var(--font-outlier);
   font-size: var(--text-sm);
@@ -312,9 +337,10 @@ html.desk-enhanced .desk-surface {
 
   width: 13.5rem;
   min-height: 13rem;
-  border-radius: 44% 38% 42% 35% / 34% 42% 31% 39%;
+  border-radius: var(--radius-paper);
   background: var(--color-paper-rose);
   text-align: center;
+  clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 88%, 88% 100%, 0 100%);
 }
 
 .cat-art {
@@ -418,9 +444,10 @@ html.desk-enhanced .desk-surface {
 
   width: 12rem;
   min-height: 10rem;
+  border-block-end: 0.5rem solid var(--color-accent-deep);
   background: var(--color-paper-amber);
   text-align: center;
-  clip-path: polygon(2% 4%, 98% 0, 100% 94%, 95% 100%, 0 97%);
+  clip-path: polygon(0 0, 92% 0, 100% 9%, 100% 100%, 0 100%);
 }
 
 .alarm-art {
@@ -490,19 +517,20 @@ html.desk-enhanced .desk-surface {
 
   width: 16rem;
   min-height: 9rem;
-  background: var(--color-paper-lavender);
-  clip-path: polygon(1% 2%, 97% 0, 100% 96%, 3% 100%);
+  border-block: 0.4rem solid var(--color-paper-ink);
+  background: var(--color-paper);
+  clip-path: none;
 }
 
 .incident-pin {
   position: absolute;
-  inset-block-start: 0.55rem;
-  inset-inline-start: 50%;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
+  inset-block-start: 0.7rem;
+  inset-inline-start: var(--space-md);
+  width: 2.8rem;
+  height: 0.3rem;
+  border-radius: 0;
   background: var(--color-accent-deep);
-  transform: translateX(-50%);
+  transform: none;
 }
 
 .incident-toggle {
@@ -524,9 +552,21 @@ html.desk-enhanced .desk-surface {
 
   width: 13.5rem;
   min-height: 12rem;
-  background: var(--color-paper-blue);
+  border-block-end: 0.45rem solid var(--color-paper-ink);
+  background-color: var(--color-paper-blue);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      var(--color-transparent) 0 1.45rem,
+      var(--color-board-grid) 1.45rem 1.5rem
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-transparent) 0 1.45rem,
+      var(--color-board-grid) 1.45rem 1.5rem
+    );
   text-align: center;
-  clip-path: polygon(1% 1%, 99% 3%, 97% 99%, 0 96%);
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 94% 100%, 0 100%);
 }
 
 .cake-art {
@@ -697,7 +737,7 @@ html.desk-enhanced .desk-surface {
   height: 11rem;
   border: 0.14rem solid var(--color-paper-ink);
   border-radius: 0 var(--radius-soft) var(--radius-soft) var(--radius-soft);
-  background: var(--color-paper-amber);
+  background: var(--color-paper-deep);
   padding-block-start: 2.8rem;
 }
 
@@ -714,8 +754,9 @@ html.desk-enhanced .desk-surface {
   height: 1.6rem;
   border: 0.14rem solid var(--color-paper-ink);
   border-block-end: 0;
-  border-radius: 0.45rem 0.45rem 0 0;
-  background: var(--color-paper-amber);
+  border-radius: var(--radius-paper) var(--radius-paper) 0 0;
+  background: var(--color-paper-ink);
+  color: var(--color-paper);
   display: grid;
   place-items: center;
   font-family: var(--font-outlier);
@@ -774,7 +815,8 @@ html.desk-enhanced .project-sheet {
   position: absolute;
   inset-inline: 0;
   min-height: 15rem;
-  border: 0.08rem solid var(--color-rule);
+  border: 0.1rem solid var(--color-paper-ink);
+  border-block-start: 0.45rem solid var(--color-accent);
   background: var(--color-paper);
   padding: var(--space-md);
   box-shadow: var(--shadow-object);
@@ -814,6 +856,7 @@ html.desk-enhanced .project-sheet {
 }
 
 .project-sheet__status {
+  border: 0.08rem solid var(--color-paper-ink);
   background: var(--color-paper-lavender);
   padding: var(--space-xs) var(--space-sm);
   font-family: var(--font-outlier);
@@ -886,7 +929,8 @@ html.desk-enhanced .project-sheet {
 }
 
 .drag-demo__label {
-  border: 0.08rem solid var(--color-paper-ink);
+  border: 0.1rem solid var(--color-paper-ink);
+  border-block-end: 0.28rem solid var(--color-accent);
   background: var(--color-paper);
   color: var(--color-paper-ink);
   padding: var(--space-2xs) var(--space-xs);
@@ -917,6 +961,7 @@ html.desk-enhanced .project-sheet {
 
 .help-dialog__paper {
   border: 0.12rem solid var(--color-paper-ink);
+  border-block-start: 0.55rem solid var(--color-accent);
   background: var(--color-paper);
   padding: var(--space-xl);
   box-shadow: var(--shadow-object);
@@ -967,12 +1012,11 @@ kbd {
   .desk-control:hover,
   .object-action:hover {
     background: var(--color-paper-deep);
-    transform: translateY(-0.08rem);
   }
 
   .desk-control:hover {
-    background: var(--color-room-muted);
-    color: var(--color-room);
+    background: var(--color-paper-ink);
+    color: var(--color-paper);
   }
 
   .desk-links a:hover {
@@ -1005,7 +1049,7 @@ kbd {
 
   .desk-surface {
     min-height: 96rem;
-    border-width: 0.7rem;
+    border-width: 0.22rem;
   }
 
   html.desk-enhanced .desk-surface {
@@ -1133,7 +1177,12 @@ kbd {
 
 @media (min-width: 80rem) {
   .desk-shell {
-    width: min(82rem, calc(100% - var(--space-2xl)));
+    width: min(88rem, calc(100% - var(--space-xl)));
+  }
+
+  .desk-toolbar,
+  .desk-links {
+    width: min(88rem, calc(100% - var(--space-xl)));
   }
 }
 
